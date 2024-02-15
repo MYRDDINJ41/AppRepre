@@ -10,8 +10,14 @@ const MyStack = () => {
     return(
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name="Login" component={Login} />
-                <Stack.Screen name="Register" component={Register} />
+                <Stack.Screen 
+                    name="Login" component={Login} 
+                    options={{headerShown: false}} />
+                <Stack.Screen 
+                    name="Register" 
+                    component={Register} 
+                    options={
+                        {headerTitle: "Registro"}} />
             </Stack.Navigator>
         </NavigationContainer>
     )

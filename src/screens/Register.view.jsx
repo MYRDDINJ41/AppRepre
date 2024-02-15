@@ -65,7 +65,7 @@ const Login = () => {
           placeholder="Razón Social"
         />
         <TouchableWithoutFeedback>
-          <Text style={styles.button}>Entrar</Text>
+          <Text style={styles.button}>Registrarse</Text>
         </TouchableWithoutFeedback>
       </View>
     </ScrollView>

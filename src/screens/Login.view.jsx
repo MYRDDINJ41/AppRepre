@@ -31,7 +31,7 @@ const Login = ({ navigation }) => {
           <Text style={styles.button}>Entrar</Text>
         </TouchableWithoutFeedback>
         <Text style={styles.text}>
-          ¿Olvidasste tu contraseña?<Text> </Text>
+          ¿Olvidaste tu contraseña?<Text> </Text>
           <TouchableWithoutFeedback
             onPress={() => navigation.navigate("Recover")}
           >

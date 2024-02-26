@@ -5,43 +5,24 @@ import {
   View,
   TextInput,
   ScrollView,
-  TouchableWithoutFeedback,
-  fetch
+  TouchableWithoutFeedback
 } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 
 const Login = () => {
 
-  let [isLoading , setLoading] = useState(true);
-  let [error, setError] = useState();
-  let [response, setResponse] = useState();
-
-  useEffect(() => {
-    fetch("http://localhost:3000/api/users")
-    .then(res => res.json())
-    .then((result) => {
-      setLoading(false);
-      setLoading(result);
-    },
-    (error) => {
-      setLoading(false);
-      setError(error);
-    })
-  }, [])
+  const [selected, setSelected] = useState('');
   
-  const getContent = () => {
-    if(isLoading) {
-      console.log("Cargando")
-    }
-    if(error){
-      return console.error(error)
-    }
-    return console.log(response);
-  }
+  const data = [
+    {key:'1', value:'Opcion 1'},
+    {key:'2', value:'Opcion 2'},
+    {key:'3', value:'Opcion 3'},
+    {key:'4', value:'Opcion 4'},
+    {key:'5', value:'Opcion 5'}
+  ]
 
   return (
     <ScrollView style={styles.container}>
-      {getContent}
       <View style={styles.container}>
         <Text style={styles.tittle}>Registrate</Text>
         <TextInput
@@ -70,7 +51,11 @@ const Login = () => {
           placeholder="Numero de documento"
         ></TextInput>
         <TextInput style={styles.textInput} placeholder="Cargo"></TextInput>
-        
+        <SelectList
+          boxStyles = {styles.select}
+          data = {data}
+          setSelected={setSelected}
+        />
         <TouchableWithoutFeedback>
           <Text style={styles.button}>Registrarse</Text>
         </TouchableWithoutFeedback>

@@ -14,11 +14,11 @@ const Home =()=>{
             <Tap.Screen
                 name="Profile"
                 component={Profile}
-                options={{headerTitle: "Profile"}}/>
+                options={{headerShown: false}}/>
             <Tap.Screen
                 name="Form"
                 component={Form}
-                options={{headerTitle: "Profile"}}/>
+                options={{headerShown: false}}/>
         </Tap.Navigator>)
 }
 

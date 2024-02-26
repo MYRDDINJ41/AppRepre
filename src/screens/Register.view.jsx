@@ -1,5 +1,4 @@
 import React, {useState, useEffect }from "react";
-import axios from "axios";
 import {
   Text,
   StyleSheet,
@@ -7,26 +6,42 @@ import {
   TextInput,
   ScrollView,
   TouchableWithoutFeedback,
+  fetch
 } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 
 const Login = () => {
+
+  let [isLoading , setLoading] = useState(true);
+  let [error, setError] = useState();
+  let [response, setResponse] = useState();
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/users")
+    .then(res => res.json())
+    .then((result) => {
+      setLoading(false);
+      setLoading(result);
+    },
+    (error) => {
+      setLoading(false);
+      setError(error);
+    })
+  }, [])
   
-  const [selected, setSelected] = React.useState("");
-  const data = [
-    { Key: "1", value: "Carros" },
-    { Key: "2", value: "Motos" },
-    { Key: "3", value: "Camionetas" },
-    { Key: "4", value: "Gatos" },
-    { Key: "5", value: "Perros" },
-    { Key: "6", value: "Caballos" },
-    { Key: "7", value: "Conejos" },
-    { Key: "8", value: "Pajaros" },
-    { Key: "9", value: "Gatitos" },
-    { Key: "10", value: "Perritos" },
-  ];
+  const getContent = () => {
+    if(isLoading) {
+      console.log("Cargando")
+    }
+    if(error){
+      return console.error(error)
+    }
+    return console.log(response);
+  }
+
   return (
     <ScrollView style={styles.container}>
+      {getContent}
       <View style={styles.container}>
         <Text style={styles.tittle}>Registrate</Text>
         <TextInput
@@ -55,15 +70,7 @@ const Login = () => {
           placeholder="Numero de documento"
         ></TextInput>
         <TextInput style={styles.textInput} placeholder="Cargo"></TextInput>
-        <SelectList
-          style={styles.select}
-          data={data}
-          boxStyles={styles.select}
-          dropdownStyles={{ borderColor: "#FF5C3D" }}
-          setSelected={(val) => setSelected(val)}
-          save="value"
-          placeholder="Razón Social"
-        />
+        
         <TouchableWithoutFeedback>
           <Text style={styles.button}>Registrarse</Text>
         </TouchableWithoutFeedback>

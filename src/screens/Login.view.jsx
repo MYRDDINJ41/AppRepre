@@ -9,8 +9,6 @@ import {
 } from "react-native";
 
 const Login = ({ navigation }) => {
-
-
   return (
     <View style={styles.container}>
       <View style={styles.consteinerLogo}>
@@ -19,8 +17,10 @@ const Login = ({ navigation }) => {
           style={styles.imgLogo}
         />
       </View>
-      <View style={styles.conteinerForm}>
+      <View style={styles.containerTittle}>
         <Text style={styles.tittle}>Ingresa</Text>
+      </View>
+      <View style={styles.conteinerForm}>
         <TextInput placeholder="Usuario" style={styles.textInput}></TextInput>
         <TextInput
           placeholder="Contraseña"
@@ -28,24 +28,29 @@ const Login = ({ navigation }) => {
           style={styles.textInput}
         ></TextInput>
         <TouchableWithoutFeedback>
-          <Text style={styles.button}>Entrar</Text>
+          <Text 
+            style={styles.button}
+            onPress={() => navigation.navigate ("Home")}
+            >Entrar</Text>
         </TouchableWithoutFeedback>
-        <Text style={styles.text}>
-          ¿Olvidaste tu contraseña?<Text> </Text>
-          <TouchableWithoutFeedback
-            onPress={() => navigation.navigate("Recover")}
-          >
-            <Text style={styles.textLink}>Recuperar</Text>
-          </TouchableWithoutFeedback>
-        </Text>
-        <Text style={styles.text}>
-          ¿No tienes cuenta?<Text> </Text>
-          <TouchableWithoutFeedback
-            onPress={() => navigation.navigate("Register")}
-          >
-            <Text style={styles.textLink}>Registrate</Text>
-          </TouchableWithoutFeedback>
-        </Text>
+        <View style={styles.containerText}>
+          <Text style={styles.text}>
+            ¿Olvidaste tu contraseña?<Text> </Text>
+            <TouchableWithoutFeedback
+              onPress={() => navigation.navigate("Recover")}
+            >
+              <Text style={styles.textLink}>Recuperar</Text>
+            </TouchableWithoutFeedback>
+          </Text>
+          <Text style={styles.text}>
+            ¿No tienes cuenta?<Text> </Text>
+            <TouchableWithoutFeedback
+              onPress={() => navigation.navigate("Register")}
+            >
+              <Text style={styles.textLink}>Registrate</Text>
+            </TouchableWithoutFeedback>
+          </Text>
+        </View>
       </View>
     </View>
   );
@@ -63,15 +68,21 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
+  containerTittle: {
+    height: "10%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   conteinerForm: {
-    height: "50%",
+    height: "40%",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 45,
   },
   tittle: {
-    fontSize: 25,
+    fontSize: 30,
     textAlign: "center",
     fontWeight: "bold",
     color: "white",
@@ -82,7 +93,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 15,
     paddingHorizontal: 20,
-    margin: 15,
+    marginTop: 15,
     borderColor: "black",
     borderWidth: 1.2,
   },
@@ -96,13 +107,19 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: "#FF5C3D",
     padding: 10,
-    width: "100%", 
+    width: "100%",
     textAlign: "center",
     borderRadius: 50,
-    margin: 10,
+    marginTop: 15,
     color: "white",
     fontWeight: "bold",
     fontSize: 18,
+  },
+  containerText: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 15,
   },
 });
 

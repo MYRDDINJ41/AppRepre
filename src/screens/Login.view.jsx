@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 15,
     borderColor: "black",
-    borderWidth: 1.2,
+    borderWidth: 2,
   },
   text: {
     color: "white",

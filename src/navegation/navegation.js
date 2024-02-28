@@ -5,18 +5,36 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
+import { Ionicons } from '@expo/vector-icons';
+
 const Stack = createNativeStackNavigator();
 const Tap = createBottomTabNavigator();
 
 const Home =()=>{
     return(
-        <Tap.Navigator>
+        <Tap.Navigator
+        initialRouteName={profile}
+        screenOptions={({route}) => ({
+            tabBarIcon: ({focused, size}) => {
+                let iconName;
+                let rn = route.name;
+
+                if (rn === profile) {
+                    iconName == 'accessibility'
+                }else if (rn === form) {
+                    iconName = 'form'
+                }
+
+                return <Ionicons name={iconName} size={size} color="black" />
+                
+            }
+        })}>
             <Tap.Screen
-                name="Profile"
+                name={profile}
                 component={Profile}
                 options={{headerShown: false}}/>
             <Tap.Screen
-                name="Form"
+                name={form}
                 component={Form}
                 options={{headerShown: false}}/>
         </Tap.Navigator>)

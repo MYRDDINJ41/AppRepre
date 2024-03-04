@@ -1,29 +1,32 @@
 import React, {useState, useEffect }from "react";
+import { View_form } from '../components/index.js';
 import { View, Text, ScrollView, TouchableWithoutFeedback, StyleSheet, TextInput} from "react-native";
-import CheckBox from "expo-checkbox"
 import { SelectList } from "react-native-dropdown-select-list";
 import { Entypo } from '@expo/vector-icons';
 
-const Form = () => {
+const Form = ({navigation}) => {
 
   const [selected, setSelected] = useState('');
-  const [isSelect, setIsSelected] = useState(false);
-  const [isSelect2, setIsSelected2] = useState(false);
-  
+
   const data = [
     {key:'1', value:'Tipo'},
     {key:'2', value:'Salida'},
   ]
 
-  return (
+  console.log(selected);
+
+  const viewForm = (
     <ScrollView>
       <View style={styles.container}>
-        <TouchableWithoutFeedback>
-          <Text
-            style={styles.button}>
-            Agregar Imagenes
-          </Text>
-        </TouchableWithoutFeedback>
+        
+      <TouchableWithoutFeedback
+        onPress={() => navigation.navigate("Camera")}>
+            <Text
+              style={styles.button}>
+              Agregar Imagenes
+            </Text>
+      </TouchableWithoutFeedback>
+        
         <Text style ={styles.titulo}>Tipo de registro</Text>
         <Text style ={styles.textos}>Acta de sanidad del vehiculo</Text>
         <Text style ={styles.titulo}>Deposito</Text>
@@ -33,139 +36,32 @@ const Form = () => {
           data = {data}
           setSelected={setSelected}
         />
-        <Text style ={styles.titulo}>Inconsistencias Fisicas</Text>
-        <View 
-          style ={styles.containerCheck}>
-          <CheckBox
-            style = {styles.checkBox}
-            value={isSelect}
-            onValueChange = {setIsSelected}
-            color={'#0079C2'}
-          />
-          <Text 
-            style = {styles.textosCheck}>ACTA DE SANIDAD DEL VEHICULO</Text> 
-        </View>
-        <View 
-          style ={styles.containerCheck}>
-          <CheckBox
-            style = {styles.checkBox}
-            value={isSelect}
-            onValueChange = {setIsSelected}
-            color={'#0079C2'}
-          />
-          <Text 
-            style = {styles.textosCheck}>DIFERENCIA DE BULTOS</Text> 
-        </View>
-        <View 
-          style ={styles.containerCheck}>
-          <CheckBox
-            style = {styles.checkBox}
-            value={isSelect}
-            onValueChange = {setIsSelected}
-            color={'#0079C2'}
-          />
-          <Text 
-            style = {styles.textosCheck}>EMPAQUE O EMBALAJE ABIERTO</Text> 
-        </View>
-        <View 
-          style ={styles.containerCheck}>
-          <CheckBox
-            style = {styles.checkBox}
-            value={isSelect}
-            onValueChange = {setIsSelected}
-            color={'#0079C2'}
-          />
-          <Text 
-            style = {styles.textosCheck}>EMPAQUE O EMBALEJE DESTRUIDO</Text> 
-        </View>
-        <View 
-          style ={styles.containerCheck}>
-          <CheckBox
-            style = {styles.checkBox}
-            value={isSelect}
-            onValueChange = {setIsSelected}
-            color={'#0079C2'}
-          />
-          <Text 
-            style = {styles.textosCheck}>HUMEDAD</Text> 
-        </View>
-        <View 
-          style ={styles.containerCheck}>
-          <CheckBox
-            style = {styles.checkBox}
-            value={isSelect}
-            onValueChange = {setIsSelected}
-            color={'#0079C2'}
-          />
-          <Text 
-            style = {styles.textosCheck}>OTROS</Text> 
-        </View>
-        <View 
-          style ={styles.containerCheck}>
-          <CheckBox
-            style = {styles.checkBox}
-            value={isSelect}
-            onValueChange = {setIsSelected}
-            color={'#0079C2'}
-          />
-          <Text 
-            style = {styles.textosCheck}>PRECINTOS ROTOS</Text> 
-        </View>
-        <View 
-          style ={styles.containerCheck}>
-          <CheckBox
-            style = {styles.checkBox}
-            value={isSelect}
-            onValueChange = {setIsSelected}
-            color={'#0079C2'}
-          />
-          <Text 
-            style = {styles.textosCheck}>RECINTADO</Text> 
-        </View>
-        <View 
-          style ={styles.containerCheck}>
-          <CheckBox
-            style = {styles.checkBox}
-            value={isSelect}
-            onValueChange = {setIsSelected}
-            color={'#0079C2'}
-          />
-          <Text 
-            style = {styles.textosCheck}>SELLO NIMF15 DE EMBALAJES DE MADERA</Text> 
-        </View>
-        <Text style ={styles.titulo}>Inconsistencias Documentales</Text>
-        <View 
-          style ={styles.containerCheck}>
-          <CheckBox
-            style = {styles.checkBox}
-            value={isSelect}
-            onValueChange = {setIsSelected}
-            color={'#0079C2'}
-          />
-          <Text 
-            style = {styles.textosCheck}>CARGA RECIBIDA FUERA DE TERMINOS</Text> 
+        <View>
+          {selected === '1' ? <View_form/> : selected === '2' ? <View/> : <View/>}
         </View>
         <Text style ={styles.titulo}>Observaciones</Text>
-        <TextInput 
-          style = {styles.textInput} 
-          multiline={true}>
-        </TextInput>
-        <Text style ={styles.titulo}>Identificador de camión</Text>
-        <TextInput 
-          style = {styles.textInput} 
-          multiline={true}>
-        </TextInput>
-        <TouchableWithoutFeedback>
-          <View style={styles.button2}>
-            <Text style = {styles.textButton2}>
-              Enviar formulario
-            </Text>
-            <Entypo name="onedrive" size={25} color="white" />
-          </View>
-        </TouchableWithoutFeedback>
+      <TextInput 
+        style = {styles.textInput} 
+        multiline={true}>
+      </TextInput>
+      <Text style ={styles.titulo}>Identificador de camión</Text>
+      <TextInput 
+        style = {styles.textInput} 
+        multiline={true}>
+      </TextInput>
+      <TouchableWithoutFeedback>
+        <View style={styles.button2}>
+          <Text style = {styles.textButton2}>
+            Enviar formulario
+          </Text>
+          <Entypo name="onedrive" size={25} color="white" />
+        </View>
+      </TouchableWithoutFeedback>
       </View>
     </ScrollView>
   );
+
+  return viewForm
 };
 
 const styles = ({

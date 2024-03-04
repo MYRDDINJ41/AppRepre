@@ -30,7 +30,7 @@ In this case we use react native whit **Expo** this is a tool to work more easy 
 
 ```bash
 # Firt install a global component to use expo
-npm intall -g expo-cli
+npm install -g expo-cli
 
 # Check the version
 expo --version

@@ -22,13 +22,10 @@
     "react-native-dropdown-select-list": "^2.0.5",
     "react-native-safe-area-context": "4.8.2",
     "react-native-screens": "~3.29.0",
-<<<<<<< HEAD
     "react-native-select-dropdown": "^3.4.0",
     "react-native-web": "~0.19.6",
-    "expo-checkbox": "~2.7.0"
-=======
-    "react-native-web": "~0.19.6"
->>>>>>> 7f9cade210fd394206bb9625cfa6995082947f2e
+    "expo-checkbox": "~2.7.0",
+    "expo-camera": "~14.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

@@ -45,7 +45,7 @@ const Login = ({ navigation }) => {
           <Text style={styles.text}>
             ¿No tienes cuenta?<Text> </Text>
             <TouchableWithoutFeedback
-              onPress={() => navigation.navigate("Register")}
+              onPress={() => navigation.navigate("Registro")}
             >
               <Text style={styles.textLink}>Registrate</Text>
             </TouchableWithoutFeedback>

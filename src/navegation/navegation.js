@@ -1,5 +1,6 @@
-import React from "react";
-import {Login, Profile, Register, Form} from '../screens/index.js'
+import React, { useState } from "react";
+import {Login, Profile, Register, Form, ViewCamera} from '../screens/index.js'
+
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -10,19 +11,21 @@ import { Ionicons } from '@expo/vector-icons';
 const Stack = createNativeStackNavigator();
 const Tap = createBottomTabNavigator();
 
+
 const Home =()=>{
+
     return(
         <Tap.Navigator
-        initialRouteName={profile}
+        initialRouteName="Profile"
         screenOptions={({route}) => ({
             tabBarIcon: ({focused, size}) => {
                 let iconName;
                 let rn = route.name;
 
-                if (rn === profile) {
+                if (rn === "Profile") {
                     iconName == 'accessibility'
-                }else if (rn === form) {
-                    iconName = 'form'
+                }else if (rn === "Form") {
+                    iconName == 'form'
                 }
 
                 return <Ionicons name={iconName} size={size} color="black" />
@@ -30,11 +33,11 @@ const Home =()=>{
             }
         })}>
             <Tap.Screen
-                name={profile}
+                name="Profile"
                 component={Profile}
                 options={{headerShown: false}}/>
             <Tap.Screen
-                name={form}
+                name="Form"
                 component={Form}
                 options={{headerShown: false}}/>
         </Tap.Navigator>)
@@ -46,17 +49,21 @@ const MyStack = () => {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen 
-                    name="Login" 
+                    name="Profile"
                     component={Login} 
                     options={{headerShown: false}} />
                 <Stack.Screen 
-                    name="Register" 
+                    name="Registro"
                     component={Register} 
                     options={{headerTitle: "Registro"}} />
                 <Stack.Screen 
-                    name="Home" 
+                    name="Home"
                     component={Home} 
-                    options={{headerTitle: "Home"}} /> 
+                    options={{headerTitle: "Home"}} />
+                <Stack.Screen
+                    name = "Camera"
+                    component={ViewCamera}
+                    options={{headerTitle: "Camera"}}/>
             </Stack.Navigator>
         </NavigationContainer>
     )

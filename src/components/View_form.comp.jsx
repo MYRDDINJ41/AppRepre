@@ -6,6 +6,17 @@ import CheckBox from "expo-checkbox"
 const View_form = () => {
   const [isSelect, setIsSelected] = useState(false);
   const [isSelect2, setIsSelected2] = useState(false);
+  const [isSelect3, setIsSelected3] = useState(false);
+  const [isSelect4, setIsSelected4] = useState(false); 
+  const [isSelect5, setIsSelected5] = useState(false);
+  const [isSelect6, setIsSelected6] = useState(false);
+  const [isSelect7, setIsSelected7] = useState(false);
+  const [isSelect8, setIsSelected8] = useState(false);
+  const [isSelect9, setIsSelected9] = useState(false);
+  const [isSelect10, setIsSelected10] = useState(false);
+  const [isSelect11, setIsSelected11] = useState(false);
+  // const [isSelect12, setIsSelected12] = useState(false);
+
 
   const vista = (
     <View>
@@ -22,8 +33,8 @@ const View_form = () => {
       <View style={styles.containerCheck}>
         <CheckBox
           style={styles.checkBox}
-          value={isSelect}
-          onValueChange={setIsSelected}
+          value={isSelect2}
+          onValueChange={setIsSelected2}
           color={"#0079C2"}
         />
         <Text style={styles.textosCheck}>DIFERENCIA DE BULTOS</Text>
@@ -31,8 +42,8 @@ const View_form = () => {
       <View style={styles.containerCheck}>
         <CheckBox
           style={styles.checkBox}
-          value={isSelect}
-          onValueChange={setIsSelected}
+          value={isSelect3}
+          onValueChange={setIsSelected3}
           color={"#0079C2"}
         />
         <Text style={styles.textosCheck}>EMPAQUE O EMBALAJE ABIERTO</Text>
@@ -40,8 +51,8 @@ const View_form = () => {
       <View style={styles.containerCheck}>
         <CheckBox
           style={styles.checkBox}
-          value={isSelect}
-          onValueChange={setIsSelected}
+          value={isSelect4}
+          onValueChange={setIsSelected4}
           color={"#0079C2"}
         />
         <Text style={styles.textosCheck}>EMPAQUE O EMBALEJE DESTRUIDO</Text>
@@ -49,8 +60,8 @@ const View_form = () => {
       <View style={styles.containerCheck}>
         <CheckBox
           style={styles.checkBox}
-          value={isSelect}
-          onValueChange={setIsSelected}
+          value={isSelect5}
+          onValueChange={setIsSelected6}
           color={"#0079C2"}
         />
         <Text style={styles.textosCheck}>HUMEDAD</Text>
@@ -58,8 +69,8 @@ const View_form = () => {
       <View style={styles.containerCheck}>
         <CheckBox
           style={styles.checkBox}
-          value={isSelect}
-          onValueChange={setIsSelected}
+          value={isSelect7}
+          onValueChange={setIsSelected7}
           color={"#0079C2"}
         />
         <Text style={styles.textosCheck}>OTROS</Text>
@@ -67,8 +78,8 @@ const View_form = () => {
       <View style={styles.containerCheck}>
         <CheckBox
           style={styles.checkBox}
-          value={isSelect}
-          onValueChange={setIsSelected}
+          value={isSelect8}
+          onValueChange={setIsSelected8}
           color={"#0079C2"}
         />
         <Text style={styles.textosCheck}>PRECINTOS ROTOS</Text>
@@ -76,8 +87,8 @@ const View_form = () => {
       <View style={styles.containerCheck}>
         <CheckBox
           style={styles.checkBox}
-          value={isSelect}
-          onValueChange={setIsSelected}
+          value={isSelect9}
+          onValueChange={setIsSelected9}
           color={"#0079C2"}
         />
         <Text style={styles.textosCheck}>RECINTADO</Text>
@@ -85,8 +96,8 @@ const View_form = () => {
       <View style={styles.containerCheck}>
         <CheckBox
           style={styles.checkBox}
-          value={isSelect}
-          onValueChange={setIsSelected}
+          value={isSelect10}
+          onValueChange={setIsSelected10}
           color={"#0079C2"}
         />
         <Text style={styles.textosCheck}>
@@ -97,8 +108,8 @@ const View_form = () => {
       <View style={styles.containerCheck}>
         <CheckBox
           style={styles.checkBox}
-          value={isSelect}
-          onValueChange={setIsSelected}
+          value={isSelect11}
+          onValueChange={setIsSelected11}
           color={"#0079C2"}
         />
         <Text style={styles.textosCheck}>CARGA RECIBIDA FUERA DE TERMINOS</Text>

@@ -14,7 +14,7 @@ const View_form = () => {
   const [isSelect8, setIsSelected8] = useState(false);
   const [isSelect9, setIsSelected9] = useState(false);
   const [isSelect10, setIsSelected10] = useState(false);
-  const [isSelect11, setIsSelected11] = useState(false);
+  //const [isSelect11, setIsSelected11] = useState(false);
   // const [isSelect12, setIsSelected12] = useState(false);
 
 
@@ -61,10 +61,19 @@ const View_form = () => {
         <CheckBox
           style={styles.checkBox}
           value={isSelect5}
-          onValueChange={setIsSelected6}
+          onValueChange={setIsSelected5}
           color={"#0079C2"}
         />
         <Text style={styles.textosCheck}>HUMEDAD</Text>
+      </View>
+      <View style={styles.containerCheck}>
+        <CheckBox
+          style={styles.checkBox}
+          value={isSelect6}
+          onValueChange={setIsSelected6}
+          color={"#0079C2"}
+        />
+        <Text style={styles.textosCheck}>OTROS</Text>
       </View>
       <View style={styles.containerCheck}>
         <CheckBox
@@ -73,7 +82,7 @@ const View_form = () => {
           onValueChange={setIsSelected7}
           color={"#0079C2"}
         />
-        <Text style={styles.textosCheck}>OTROS</Text>
+        <Text style={styles.textosCheck}>PRECINTOS ROTOS</Text>
       </View>
       <View style={styles.containerCheck}>
         <CheckBox
@@ -82,22 +91,13 @@ const View_form = () => {
           onValueChange={setIsSelected8}
           color={"#0079C2"}
         />
-        <Text style={styles.textosCheck}>PRECINTOS ROTOS</Text>
+        <Text style={styles.textosCheck}>RECINTADO</Text>
       </View>
       <View style={styles.containerCheck}>
         <CheckBox
           style={styles.checkBox}
           value={isSelect9}
           onValueChange={setIsSelected9}
-          color={"#0079C2"}
-        />
-        <Text style={styles.textosCheck}>RECINTADO</Text>
-      </View>
-      <View style={styles.containerCheck}>
-        <CheckBox
-          style={styles.checkBox}
-          value={isSelect10}
-          onValueChange={setIsSelected10}
           color={"#0079C2"}
         />
         <Text style={styles.textosCheck}>
@@ -108,8 +108,8 @@ const View_form = () => {
       <View style={styles.containerCheck}>
         <CheckBox
           style={styles.checkBox}
-          value={isSelect11}
-          onValueChange={setIsSelected11}
+          value={isSelect10}
+          onValueChange={setIsSelected10}
           color={"#0079C2"}
         />
         <Text style={styles.textosCheck}>CARGA RECIBIDA FUERA DE TERMINOS</Text>

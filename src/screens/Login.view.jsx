@@ -1,15 +1,15 @@
-import React from "react";
-import {
-  Text,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  View,
-  TextInput,
-  Image,
-} from "react-native";
+import React, { useState, useEffect } from "react";
+import { useFetch } from "../customsHooks/useFetch.js";
+import {Text, StyleSheet, TouchableWithoutFeedback, View, TextInput, Image } from "react-native";
 
 const Login = ({ navigation }) => {
+
+  //Version de la app
+  const { info } = useFetch("http://192.168.28.40:5000/api/v1/MVC/app/releases")
+  const myVersion = info.data[info.data.length - 1 ].VERSIONX
+
   return (
+
     <View style={styles.container}>
       <View style={styles.consteinerLogo}>
         <Image
@@ -51,8 +51,13 @@ const Login = ({ navigation }) => {
             </TouchableWithoutFeedback>
           </Text>
         </View>
+        <Text style={styles.text}>
+          Vrs. {myVersion}
+        </Text>
       </View>
     </View>
+
+
   );
 };
 

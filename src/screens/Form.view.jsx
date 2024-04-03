@@ -13,8 +13,6 @@ const Form = ({navigation}) => {
     {key:'2', value:'Salida'},
   ]
 
-  console.log(selected);
-
   const viewForm = (
     <ScrollView>
       <View style={styles.container}>

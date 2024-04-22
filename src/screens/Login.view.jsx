@@ -1,52 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { useFetch } from "../customsHooks/useFetch.js";
 import { jwtDecode } from "jwt-decode";
-import {Text, StyleSheet, TouchableWithoutFeedback, View, TextInput, Image, Button} from "react-native";
+import React, { useState, useEffect } from "react";
+import { LogingPost } from "../components/LoginPost.jsx";
+import {Text, StyleSheet, TouchableWithoutFeedback, View, TextInput, Image} from "react-native";
 
 const Login = ({ navigation }) => {
 
-  //Version de la app
+  //App version
   //const { info } = useFetch("http://192.168.28.40:5000/api/v1/MVC/app/releases")
   //const miVersion = info.data[info.data.length - 1].VERSIONX  
   //console.log(miVersion);
-  
 
   //Variables Usuario contrasena y usuario
   const [user, setUser] = useState('');
   const [pass, setPass] = useState('');
 
-  //Funcion POST login
-  const miLogin = async () => {
-
+  const handleLogin = async () => {
     try {
-      const requestBody = {
-        SYS00001: {
-          USREMAXX: user,
-          USRPASSX: pass,
-          ISSOCIAL: "NO"
-        }
-      };
-      const res = await fetch('http://192.168.28.40:5000/api/v1/login', {
-        method: 'POST',
-        headers:{
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestBody)
-      });
-      if(res.ok){
-        const miInfo = await res.json();
-        navigation.navigate("Home")
-
-        console.log(miInfo.data.token);
-        miToken = miInfo.data.token;
-        return miToken
-      }
+      const JWT = await LogingPost(user,pass, navigation);
+      console.log(JWT);
+      const decode = jwtDecode(JWT)
+      console.log(decode)
     } catch (error) {
-      
-    }
-    
-  }
+      console.log(error)
 
+    }
+  }
 
 
   return (
@@ -76,7 +54,7 @@ const Login = ({ navigation }) => {
           onChangeText={setPass}
         ></TextInput>
 
-<TouchableWithoutFeedback onPress={miLogin}>
+        <TouchableWithoutFeedback onPress={handleLogin}>
           <Text style={styles.button}>Entrar</Text>
         </TouchableWithoutFeedback>
 

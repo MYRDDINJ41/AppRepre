@@ -1,31 +1,50 @@
 import { jwtDecode } from "jwt-decode";
 import React, { useState, useEffect } from "react";
 import { LogingPost } from "../components/LoginPost.jsx";
-import {Text, StyleSheet, TouchableWithoutFeedback, View, TextInput, Image} from "react-native";
+import {
+  Text,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  View,
+  TextInput,
+  Image,
+} from "react-native";
 
 const Login = ({ navigation }) => {
-
   //App version
   //const { info } = useFetch("http://192.168.28.40:5000/api/v1/MVC/app/releases")
-  //const miVersion = info.data[info.data.length - 1].VERSIONX  
+  //const miVersion = info.data[info.data.length - 1].VERSIONX
   //console.log(miVersion);
 
   //Variables Usuario contrasena y usuario
-  const [user, setUser] = useState('');
-  const [pass, setPass] = useState('');
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
 
   const handleLogin = async () => {
     try {
-      const JWT = await LogingPost(user,pass, navigation);
+      const JWT = await LogingPost(user, pass, navigation);
       console.log(JWT);
-      const decode = jwtDecode(JWT)
-      console.log(decode)
+  
+      // No necesitas usar useState dentro de una función asíncrona
+      // En su lugar, simplemente declara una variable para almacenar la información
+      let info;
+  
+      fetch("http://192.168.28.40:5000/api/v1/perfil", {
+        method: 'GET',
+        headers: { 'Authorization': JWT, 'Content-Type': 'application/json'},
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // Almacena la información en la variable
+          info = data;
+          console.log(info); // Aquí puedes acceder a la información
+        })
+        .catch((error) => console.error(error));
     } catch (error) {
-      console.log(error)
-
+      // Maneja errores de manera adecuada aquí
+      console.error(error);
     }
-  }
-
+  };
 
   return (
     <View style={styles.container}>
@@ -39,9 +58,8 @@ const Login = ({ navigation }) => {
         <Text style={styles.tittle}>Ingresa</Text>
       </View>
       <View style={styles.conteinerForm}>
-
-        <TextInput 
-          placeholder="Usuario" 
+        <TextInput
+          placeholder="Usuario"
           style={styles.textInput}
           value={user}
           onChangeText={setUser}
@@ -76,13 +94,9 @@ const Login = ({ navigation }) => {
             </TouchableWithoutFeedback>
           </Text>
         </View>
-        <Text style={styles.text}>
-          
-        </Text>
+        <Text style={styles.text}></Text>
       </View>
     </View>
-
-
   );
 };
 

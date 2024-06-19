@@ -1,16 +1,25 @@
-import React from "react";
+import React ,{useContext} from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import { AuthoContext } from "../context/AuthContext.js";
 
 const Profile = () => {
+
+  const {JWT, data }=  useContext(AuthoContext)
+
+  
+
   return (
+
+
     <View style={styles.container}>
       <View style={styles.consteinerLogo}>
         <Image source={require("../../img/user.png")} style={styles.imgLogo} />
       </View>
       <View style = {styles.containerData}>
-        <Text style = {styles.textos}>Andres Jaimes</Text>
-        <Text style = {styles.textos}>ANDRES.JAIMES@REPREMUNDO.COM</Text>
-        <Text style = {styles.textos}>Analista Help Desk</Text>
+        <Text style = {styles.textos}>{data.data.USRNOMXX}</Text>
+        <Text style = {styles.textos}>{data.data.USREMAXX}
+        </Text>
+        <Text style = {styles.textos}>{data.data.CARIDXXX}</Text>
       </View>
     </View>
   );

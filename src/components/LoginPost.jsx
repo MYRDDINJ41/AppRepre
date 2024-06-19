@@ -1,6 +1,5 @@
 //Funcion POST login
 export const LogingPost = async (user, pass, navigation) => {
-
   try {
     const requestBody = {
       SYS00001: {

@@ -1,5 +1,4 @@
-import { jwtDecode } from "jwt-decode";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { LogingPost } from "../components/LoginPost.jsx";
 import {
   Text,
@@ -9,39 +8,50 @@ import {
   TextInput,
   Image,
 } from "react-native";
+import { AuthoContext } from "../context/AuthContext.js";
 
 const Login = ({ navigation }) => {
-  //App version
-  //const { info } = useFetch("http://192.168.28.40:5000/api/v1/MVC/app/releases")
-  //const miVersion = info.data[info.data.length - 1].VERSIONX
-  //console.log(miVersion);
+  
+  const getVersion = () => {
+    const [miVersion, setMiVersion] = useState(null);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch('http://192.168.28.40:5000/api/v1/MVC/app/releases');
+          const data = await response.json();
+          
+          setMiVersion(data.data[data.data.length - 1].VERSIONX);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+      fetchData();
+    }, []); 
+  
+    return miVersion;
+  };
 
-  //Variables Usuario contrasena y usuario
+  //Variables Usuario contraseña y usuario
+  const {setJWT, setData} = useContext(AuthoContext);
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
-
   const handleLogin = async () => {
     try {
       const JWT = await LogingPost(user, pass, navigation);
-      console.log(JWT);
-  
-      // No necesitas usar useState dentro de una función asíncrona
-      // En su lugar, simplemente declara una variable para almacenar la información
-      let info;
-  
+     
+      setJWT(JWT)
       fetch("http://192.168.28.40:5000/api/v1/perfil", {
-        method: 'GET',
-        headers: { 'Authorization': JWT, 'Content-Type': 'application/json'},
+        method: "GET",
+        headers: { Authorization: JWT, "Content-Type": "application/json" },
       })
         .then((res) => res.json())
         .then((data) => {
-          // Almacena la información en la variable
           info = data;
-          console.log(info); // Aquí puedes acceder a la información
+          setData(info)
         })
         .catch((error) => console.error(error));
     } catch (error) {
-      // Maneja errores de manera adecuada aquí
       console.error(error);
     }
   };
@@ -93,6 +103,7 @@ const Login = ({ navigation }) => {
               <Text style={styles.textLink}>Registrate</Text>
             </TouchableWithoutFeedback>
           </Text>
+          <Text style={styles.text}>Versión: {getVersion()}</Text>
         </View>
         <Text style={styles.text}></Text>
       </View>
